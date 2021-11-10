@@ -1,0 +1,176 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Decode.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Anne Lister Diary Decrypter</title>
+    <style>
+    /*table.lefted td {
+      vertical-align: top;
+      text-align: left;
+      padding: 15px;
+    }
+    
+    table.centered td {
+      text-align: center;
+    }
+    */
+    </style>
+    <script>
+    function rplace() {
+     var rresult = rplaceString(document.f.original.value.toString());
+     document.f.original.value = rresult;
+     dcode(rresult);
+    }
+    
+    function rplaceString(aString) {
+     var rlast = aString.length - 1;
+     var rresult = new Array(aString.length)
+     for (var i = rlast; i >= 0; --i) {
+      var o = aString.charAt(i)
+      var s = rplaceTable[o]
+      rresult[rlast + i] = s ? s : o
+     }
+     return rresult.join('')
+    }
+    
+    var rplaceTable = {
+    '|' : '\u2016', // : 'Q', double lines ‖ 
+    'X' : '\u03C7', // : 'mr', // greek small letter chi χ
+    '*' : '\u04FE', // : 'mrs', // Ӿ
+    'C' : '\u20AC', // : 'miss', //euro sign €
+    'L' : '\u221A', // : 'th', //square root √
+    'A' : '\u039B', // : 'sh', //greek capital letter lamda Λ
+    'V' : '\u2207', // : 'ch', //nabla ∇
+    '{' : '\u2208', // : 'bb', //element of ∈
+    '}' : '\u220B', // : 'cc', //contains as member ∋
+    'q' : '\u03C6', // : 'ff', // φ phi
+    'I' : '\u22A5', // : 'nn', //up tack: ⊥
+    '\#' : '\u2260', // : 'pp', //not equal ≠ 
+    '\&' : '\u2241', // : 'tt', //not tilde ≁
+    'O' : '\u25A1' // '□' // white square □ for noting unidentified characters
+    }
+    
+    for (t in rplaceTable) {
+      rplaceTable[rplaceTable[t]] = i
+    }
+    </script>
+    
+    
+    <script>
+    function dcode() {
+     var result = dcodeString(document.f.original.value.toString());
+     document.f.dcoded.value = result;
+    }
+    
+    function dcodeString(aString) {
+     var last = aString.length - 1;
+     var result = new Array(aString.length)
+     for (var i = last; i >= 0; --i) {
+      var c = aString.charAt(i)
+      var r = dcodeTable[c]
+      result[last + i] = r ? r : c
+     }
+     return result.join('')
+    }
+    
+    var dcodeTable = {
+    2 : 'a',
+    '(' : 'b',
+    ')' : 'c',
+    o : 'd',
+    3 : 'e',
+    v : 'f',
+    n : 'g',
+    '@' : 'h',
+    4 : 'i',
+    //4 : 'j',
+    1 : 'k',
+    d : 'l',
+    '-' : 'm',
+    "\\" : 'n',
+    5 : 'o',
+    "\+" : 'p',
+    '\u2016' : 'q', //double lines ‖ 
+    p : 'r',
+    '=' : 's',
+    '~' : 't', //tilde
+    6 : 'u',
+    g : 'v',
+    8 : 'w',
+    w : 'x',
+    7 : 'y',
+    9 : 'z',
+    '\u03C7' : 'mr', // tifinagh letter ahaggar yazh (U+2D4B) ⵋ 
+    //'\u2AD8' : 'mrs', // superset beside and joined by dash with subset ⫘
+    '\u04FE' : 'mrs', // Ӿ
+    '\u20AC' : 'miss', //euro sign €
+    '\u221A' : 'th', //square root √
+    '\u039B' : 'sh', //greek capital letter lamda Λ
+    '\u2207' : 'ch', //nabla ∇
+    x : 'and',
+    '\u2208' : 'bb', //element of ∈
+    '\u220B' : 'cc', //contains as member ∋
+    ';' : 'ee',
+    '\u03C6' : 'ff', // φ phi
+    ':' : 'll',
+    '\u22A5' : 'nn', //up tack: ⊥
+    '!' : 'oo',
+    '\u2260' : 'pp', //not equal ≠ 
+    'P' : 'rr',
+    '?' : 'ss',
+    '\u2241' : 'tt' //not tilde ≁
+    }
+    
+    for (j in dcodeTable) {
+      dcodeTable[dcodeTable[j]] = i
+    }
+    </script>
+    
+    
+    <script>
+    function addText(event) {
+        var targ = event.target || event.srcElement;
+        document.getElementById("original").value += targ.textContent || targ.innerText;
+        dcode();
+    }
+    </script></head><body>
+    <h1>Anne Lister Diary Decrypter</h1>
+    <table class="centered"><tbody><tr>
+    <td><button onclick="addText(event)">‖</button></td><!-- q double lines ‖ -->
+    <td><button onclick="addText(event)">χ</button></td><!-- mr greek small letter chi χ -->
+    <td><button onclick="addText(event)">Ӿ</button></td><!-- mrs Ӿ -->
+    <td><button onclick="addText(event)">€</button></td><!-- miss euro sign € -->
+    <td><button onclick="addText(event)">√</button></td><!-- th √ -->
+    <td><button onclick="addText(event)">Λ</button></td><!-- sh ∧ 2227 -->
+    <td><button onclick="addText(event)">∇</button></td><!-- ch ∇ nabla -->
+    <td><button onclick="addText(event)">∈</button></td><!-- bb element of ∈ -->
+    <td><button onclick="addText(event)">∋</button></td><!-- cc contains as member ∋ -->
+    <td><button onclick="addText(event)">φ</button></td><!-- ff φ -->
+    <td><button onclick="addText(event)">⊥</button></td><!-- nn Up tack: ⊥ -->
+    <td><button onclick="addText(event)">≠</button></td><!-- pp not equal ≠ -->
+    <td><button onclick="addText(event)">≁</button></td><!-- tt <!-- not tilde ≁ -->
+    <td>Click for special characters</td>
+    </tr><tr><td>|</td><td>X</td><td>*</td><td>C</td><td>L</td><td>A</td><td>V</td><td>{</td><td>}</td><td>q</td><td>I</td><td>#</td><td>&amp;</td><td>Type for special characters
+    </td></tr></tbody></table>
+
+    <button onclick="addText(event)">Revert</button>
+
+
+    
+    
+    
+    <form name="f">Original:
+    <br>
+    <textarea rows="10" cols="70" id="original" name="original" onkeyup="rplace();dcode();"></textarea>
+    <br>
+    Decrypted:
+    <br>
+    <textarea rows="10" cols="70" name="dcoded"></textarea>
+    <br><input value="Decrypt" onclick="dcode()" type="button">
+    </form>
+    
+    <table class="lefted"><tbody><tr><td>
+    <p>
+    </p></td><td id="left">
+    

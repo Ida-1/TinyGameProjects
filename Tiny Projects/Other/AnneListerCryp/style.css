@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #949494;
+}
+table.lefted td{
+   margin-right: 1000px;
+   text-align: center;
+  
+}
+table.centered td{
+    margin-right: 1000px
+    
+}

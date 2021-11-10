@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color:#9D5C0D;
+}
+#game{
+    width: 300px;
+    height: 500px;
+    border: 1px solid #9D5C0D;
+    margin: auto;
+    box-sizing: border-box;
+    background-color: white;
+}
+#character{
+    width: 100px;
+    height: 100px;
+    background-color: #f7d08a;
+    position: relative;
+    top: 300px;
+    left: 100px;
+}
+#block{
+    width: 100px;
+    height: 100px;
+    background-color:#e5890a;
+    position: relative;
+    top: 500px;
+    animation: slide 1s infinite linear;
+}
+@keyframes slide{
+    0%{top:-100px};
+    1000%{top:-500px};
+}
+#white{
+    width: 300px;
+    height: 110px;
+    position: absolute;
+    top: 500px;
+    background-color: #9D5C0D;
+    z-index: 100000;
+}
