@@ -9,15 +9,17 @@ function enemyAttacksMe(enemy) {
     setTimeout( ()=> {
         enemy.classList.remove("showing");
     }, 3000);
- }   
+}
 
- function enemyShootsMe(enemy) {
+function enemyShootsMe(enemy) {
     enemy.classList.add("shooting");
+    updateHealthPoints(healthPoints - 20);
 
     setTimeout( ()=> {
         enemy.classList.remove("shooting");
     }, 200);
 }
+
 function livingEnemies(){
 
     return document.querySelectorAll(".enemy:not(.dead)");
@@ -32,6 +34,24 @@ function randomEnemyAttacks() {
 
     setTimeoout( ()=> {
         enemyAttacksMe(enemy);
-        randomEnemyAttacks();
     }, randomDelay);
 }
+
+var healthPoints = 100; 
+
+    healthPoints = points;
+    var healthBar = document.querySelector("#healthBar");
+
+    healthBar.style.width = points + "%";
+
+function updateHealthPoints(points) {
+    healthPoints = points;
+    var healthBar = document.querySelector("#healthBar");
+    
+    healthBar.style.width = points + "%";
+
+    if(healthPoints < 1) {
+        alert("Game over!");
+        window.location.reload();
+    }
+}    
