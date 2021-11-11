@@ -9,16 +9,15 @@ function enemyAttacksMe(enemy) {
     setTimeout( ()=> {
         enemy.classList.remove("showing");
     }, 3000);
-}
+ }   
 
-function enemyShootsMe(enemy) {
+ function enemyShootsMe(enemy) {
     enemy.classList.add("shooting");
 
     setTimeout( ()=> {
         enemy.classList.remove("shooting");
     }, 200);
 }
-
 function livingEnemies(){
 
     return document.querySelectorAll(".enemy:not(.dead)");
@@ -33,5 +32,6 @@ function randomEnemyAttacks() {
 
     setTimeoout( ()=> {
         enemyAttacksMe(enemy);
+        randomEnemyAttacks();
     }, randomDelay);
 }
