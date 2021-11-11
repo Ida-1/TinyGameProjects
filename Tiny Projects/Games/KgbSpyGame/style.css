@@ -1,23 +1,40 @@
 #gameFrame {
-    background-color:#222831;
-    height: 600px;
-    width: 800px;
-    margin: auto;
-    position: relative;
-    overflow: hidden; 
+
+	background-color: #222831;
+	height: 600px;
+	width: 800px;
+	margin: auto;
+	position: relative;
+	overflow: hidden;
 }
-.enemy{
-    width: 150px;
-    height: 400px;
-    position: absolute;
-    background-color:#DDDDDD;
-    bottom: -400px;
-    transition: all .5s;
+
+#healthBar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 100%;
+	background-color: #f05454;
+	transition: width .5s;
+}
+
+.enemy {
+	width: 150px;
+	height: 400px;
+	position: absolute;
+	background-color: #dddddd;
+	bottom: -400px;
+	transition: all .5s;
 }
 
 .enemy.showing {
-    bottom: 0px;
+	bottom: 0;
 }
+
+.enemy.shooting {
+	background-color: #f05454;
+}
+
 
 #enemy1 { left: 5px; }
 #enemy2 { left: 165px; }
@@ -25,12 +42,8 @@
 #enemy4 { left: 485px; }
 #enemy5 { left: 645px; }
 
-.enemy.dead {
-    
-    background-color: #F05454; 
-    height: 50px;
-}
 
-.enemy.shooting {
-    background-color: #F05454;
+.enemy.dead {
+	background-color: #f05454;
+	height: 50px;
 }
